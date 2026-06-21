@@ -1,20 +1,20 @@
-# LLMs — Global config for OpenCode & Claude Code
+# agentic-coding
 
 Shared skills and rules that work across both [OpenCode](https://opencode.ai) and [Claude Code](https://claude.ai/code).
 
 ## Structure
 
 ```
-llms/
-├── skills/                     # Skills — auto-discovered by both tools
+agentic-coding/
+├── skills/                     Skills — auto-discovered by both tools
 │   └── <name>/SKILL.md
-├── rules/                      # Rules — auto-discovered by Claude Code,
-│   ├── commit.md               #   referenced by OpenCode via opencode.json
+├── rules/                      Rules — auto-discovered by Claude Code,
+│   ├── commit.md               referenced by OpenCode via opencode.json
 │   └── collaboration.md
 ├── .config/
-│   └── opencode/               # OpenCode global config
+│   └── opencode/               OpenCode global config
 │       └── opencode.json
-├── setup.sh                    # Symlinks everything into place
+├── setup.sh                    Symlinks everything into place
 └── README.md
 ```
 
@@ -23,17 +23,17 @@ llms/
 Run once per machine after cloning:
 
 ```bash
-git clone <url> ~/llms
-~/llms/setup.sh
+git clone <url> ~/agentic-coding
+~/agentic-coding/setup.sh
 ```
 
 This symlinks:
 
 | Repo path | Symlinked to | Used by |
-|---|---|---|---|
+|---|---|---|
 | `skills/` | `~/.claude/skills/` | OpenCode + Claude Code |
-| `rules/` | `~/.claude/rules/` | OpenCode (via `opencode.json`) + Claude Code (auto-discovered) |
-| `.config/opencode/`  | `~/.config/opencode/` | OpenCode |
+| `rules/` | `~/.claude/rules/` | OpenCode (via `opencode.json`) + Claude Code |
+| `.config/opencode/` | `~/.config/opencode/` | OpenCode |
 
 Existing directories are backed up with a `.bak` suffix.
 
@@ -69,4 +69,4 @@ paths: [src/**/*.ts]    # optional: scope to certain paths (Claude Code)
 Rule content here.
 ```
 
-Rules are loaded by both tools — Claude Code auto-discovers them from `~/.claude/rules/`, and OpenCode picks them up via the `"instructions"` array in `opencode.json`.
+OpenCode picks it up automatically via the `"../rules/*.md"` glob in `opencode.json`. Claude Code auto-discovers it from `~/.claude/rules/`.
