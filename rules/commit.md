@@ -1,3 +1,7 @@
+---
+description: Coding style preferences for consistent code contributions
+---
+
 # Coding style preferences
 
 ## Commits
