@@ -1,7 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "instructions": [
-    "../rules/commit.md",
-    "../rules/collaboration.md"
+    "../rules/*.md"
   ]
 }
