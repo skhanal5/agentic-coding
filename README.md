@@ -69,4 +69,4 @@ paths: [src/**/*.ts]    # optional: scope to certain paths (Claude Code)
 Rule content here.
 ```
 
-OpenCode picks it up automatically via the `"../rules/*.md"` glob in `opencode.json`. Claude Code auto-discovers it from `~/.claude/rules/`.
+OpenCode picks it up automatically via the `"../../rules/*.md"` glob in `opencode.json`. Claude Code auto-discovers it from `~/.claude/rules/`.
