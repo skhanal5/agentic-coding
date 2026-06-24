@@ -4,36 +4,61 @@ set -euo pipefail
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "Setting up global config from $REPO_DIR"
+echo
 
-# --- Claude Code: skills & rules ---
-mkdir -p "$HOME/.claude"
+prompt() {
+  local label="$1" path="$2" options="$3" default="$4" choice
+  echo "  $label found at $path" >&2
+  echo "    $options" >&2
+  if [ -t 0 ]; then
+    read -r -p "    Action [$default]: " choice </dev/tty
+    echo "${choice:-$default}"
+  else
+    echo "    (non-interactive, using default: $default)" >&2
+    echo "$default"
+  fi
+}
 
-if [ -e "$HOME/.claude/skills" ] && [ ! -L "$HOME/.claude/skills" ]; then
-  mv "$HOME/.claude/skills" "$HOME/.claude/skills.bak"
-  echo "Backed up existing ~/.claude/skills to ~/.claude/skills.bak"
-fi
-ln -sfn "$REPO_DIR/skills" "$HOME/.claude/skills"
-echo "  ~/.claude/skills -> $REPO_DIR/skills"
+install_copy() {
+  local src="$1" dst="$2"
+  mkdir -p "$(dirname "$dst")"
+  cp -R "$src" "$dst"
+  echo "    $dst <- $src"
+}
 
-if [ -e "$HOME/.claude/rules" ] && [ ! -L "$HOME/.claude/rules" ]; then
-  mv "$HOME/.claude/rules" "$HOME/.claude/rules.bak"
-  echo "Backed up existing ~/.claude/rules to ~/.claude/rules.bak"
-fi
-ln -sfn "$REPO_DIR/rules" "$HOME/.claude/rules"
-echo "  ~/.claude/rules   -> $REPO_DIR/rules"
+backup_and_replace() {
+  local src="$1" dst="$2"
+  mv "$dst" "$dst.bak"
+  echo "    (backed up $dst -> $dst.bak)"
+  cp -R "$src" "$dst"
+  echo "    $dst <- $src"
+}
 
-# --- OpenCode: config ---
-mkdir -p "$HOME/.config/opencode"
-cp "$REPO_DIR/.config/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
-echo "  ~/.config/opencode/opencode.json <- $REPO_DIR/.config/opencode/opencode.json"
+merge_into() {
+  local src="$1" dst="$2"
+  cp -R "$src/." "$dst/"
+  echo "    $src -> $dst (merged)"
+}
 
-if [ -e "$HOME/.config/opencode/rules" ] && [ ! -L "$HOME/.config/opencode/rules" ]; then
-  mv "$HOME/.config/opencode/rules" "$HOME/.config/opencode/rules.bak"
-  echo "Backed up existing ~/.config/opencode/rules to ~/.config/opencode/rules.bak"
-fi
-ln -sfn "$REPO_DIR/rules" "$HOME/.config/opencode/rules"
-echo "  ~/.config/opencode/rules -> $REPO_DIR/rules"
+install_target() {
+  local label="$1" src="$2" dst="$3" check_flag="$4" options="$5" default="$6"
+  if [ "$check_flag" "$dst" ]; then
+    local choice
+    choice=$(prompt "$label" "$dst" "$options" "$default")
+    case "$choice" in
+      [Mm]) merge_into "$src" "$dst" ;;
+      [Rr]|[Oo]) backup_and_replace "$src" "$dst" ;;
+      [Ss]) echo "    skipped" ;;
+    esac
+  else
+    install_copy "$src" "$dst"
+  fi
+}
 
-echo ""
-echo "Done! Skills, rules, and OpenCode config are now symlinked."
-echo "Edit files in $REPO_DIR and they'll be available everywhere."
+install_target "~/.claude/skills"     "$REPO_DIR/skills"                          "$HOME/.claude/skills"              -d "[M]erge  [R]eplace  [S]kip" M
+install_target "~/.claude/rules"      "$REPO_DIR/rules"                           "$HOME/.claude/rules"               -d "[R]eplace  [S]kip"           S
+install_target "opencode.json"        "$REPO_DIR/.config/opencode/opencode.json"  "$HOME/.config/opencode/opencode.json" -f "[O]verwrite  [S]kip"     S
+install_target "~/.config/opencode/rules" "$REPO_DIR/rules"                       "$HOME/.config/opencode/rules"      -d "[R]eplace  [S]kip"           S
+
+echo
+echo "Done!"
