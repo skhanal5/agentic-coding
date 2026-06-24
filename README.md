@@ -14,7 +14,7 @@ agentic-coding/
 ├── .config/
 │   └── opencode/               OpenCode global config
 │       └── opencode.json
-├── setup.sh                    Symlinks everything into place
+├── setup.sh                    Copies everything into place
 └── README.md
 ```
 
@@ -27,15 +27,16 @@ git clone <url> ~/agentic-coding
 ~/agentic-coding/setup.sh
 ```
 
-This symlinks:
+This deploys:
 
-| Repo path | Symlinked to | Used by |
-|---|---|---|
+| Repo path | Deployed to | Used by |
+|---|---|---|---|
 | `skills/` | `~/.claude/skills/` | OpenCode + Claude Code |
 | `rules/` | `~/.claude/rules/` | OpenCode (via `opencode.json`) + Claude Code |
-| `.config/opencode/` | `~/.config/opencode/` | OpenCode |
+| `.config/opencode/opencode.json` | `~/.config/opencode/opencode.json` | OpenCode |
+| `.config/opencode/rules` | `~/.config/opencode/rules` | OpenCode |
 
-Existing directories are backed up with a `.bak` suffix.
+All files are **copied** (not symlinked). Re-run `setup.sh` to pick up changes. If a target already exists you'll be prompted what to do.
 
 ## Adding a skill
 
@@ -69,4 +70,4 @@ paths: [src/**/*.ts]    # optional: scope to certain paths (Claude Code)
 Rule content here.
 ```
 
-OpenCode picks it up automatically via the `"../../rules/*.md"` glob in `opencode.json`. Claude Code auto-discovers it from `~/.claude/rules/`.
+OpenCode picks it up automatically via the `"rules/*.md"` glob in `opencode.json`. Claude Code auto-discovers it from `~/.claude/rules/`.
