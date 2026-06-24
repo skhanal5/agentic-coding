@@ -23,12 +23,16 @@ ln -sfn "$REPO_DIR/rules" "$HOME/.claude/rules"
 echo "  ~/.claude/rules   -> $REPO_DIR/rules"
 
 # --- OpenCode: config ---
-if [ -e "$HOME/.config/opencode" ] && [ ! -L "$HOME/.config/opencode" ]; then
-  mv "$HOME/.config/opencode" "$HOME/.config/opencode.bak"
-  echo "Backed up existing ~/.config/opencode to ~/.config/opencode.bak"
+mkdir -p "$HOME/.config/opencode"
+cp "$REPO_DIR/.config/opencode/opencode.json" "$HOME/.config/opencode/opencode.json"
+echo "  ~/.config/opencode/opencode.json <- $REPO_DIR/.config/opencode/opencode.json"
+
+if [ -e "$HOME/.config/opencode/rules" ] && [ ! -L "$HOME/.config/opencode/rules" ]; then
+  mv "$HOME/.config/opencode/rules" "$HOME/.config/opencode/rules.bak"
+  echo "Backed up existing ~/.config/opencode/rules to ~/.config/opencode/rules.bak"
 fi
-ln -sfn "$REPO_DIR/.config/opencode" "$HOME/.config/opencode"
-echo "  ~/.config/opencode -> $REPO_DIR/.config/opencode"
+ln -sfn "$REPO_DIR/rules" "$HOME/.config/opencode/rules"
+echo "  ~/.config/opencode/rules -> $REPO_DIR/rules"
 
 echo ""
 echo "Done! Skills, rules, and OpenCode config are now symlinked."
