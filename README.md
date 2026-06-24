@@ -30,7 +30,7 @@ git clone <url> ~/agentic-coding
 This deploys:
 
 | Repo path | Deployed to | Used by |
-|---|---|---|---|
+|---|---|---|
 | `skills/` | `~/.claude/skills/` | OpenCode + Claude Code |
 | `rules/` | `~/.claude/rules/` | OpenCode (via `opencode.json`) + Claude Code |
 | `.config/opencode/opencode.json` | `~/.config/opencode/opencode.json` | OpenCode |
