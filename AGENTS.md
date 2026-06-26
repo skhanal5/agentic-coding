@@ -1,8 +1,9 @@
 # Shared Skills & Rules Repository
 
 - Contains skills (`skills/<name>/SKILL.md`) and rules (`rules/*.md`) shared between OpenCode and Claude Code.  
-- Global locations: `~/.claude/skills`, `~/.claude/rules`, `~/.config/opencode/opencode.json`.  
-- **Always modify files under this repo**, then run `./setup.sh` to copy them to global locations.  
+- Global locations: `~/.claude/skills`, `~/.config/opencode/rules`, `~/.config/opencode/opencode.json`.  
+- **Always modify files under this repo**, then run `./setup.sh` to copy them to global locations.
+- Claude Code reads its rules from `~/.claude/CLAUDE.md` (or the global `AGENTS.md`).  
 - `setup.sh` prompts for merge/replace/skip when a target already exists; run it after any change.  
 - OpenCode loads rules via the `"rules/*.md"` glob defined in `opencode.json`.  
 - Skills are auto‑discovered on‑demand via the `skill` tool; no extra registration needed.  

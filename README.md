@@ -32,7 +32,7 @@ This deploys:
 | Repo path | Deployed to | Used by |
 |---|---|---|
 | `skills/` | `~/.claude/skills/` | OpenCode + Claude Code |
-| `rules/` | `~/.claude/rules/` | OpenCode (via `opencode.json`) + Claude Code |
+| `rules/` | `~/.config/opencode/rules/` | OpenCode (via `opencode.json`) |
 | `.config/opencode/opencode.json` | `~/.config/opencode/opencode.json` | OpenCode |
 | `.config/opencode/rules` | `~/.config/opencode/rules` | OpenCode |
 
@@ -70,4 +70,4 @@ paths: [src/**/*.ts]    # optional: scope to certain paths (Claude Code)
 Rule content here.
 ```
 
-OpenCode picks it up automatically via the `"rules/*.md"` glob in `opencode.json`. Claude Code auto-discovers it from `~/.claude/rules/`.
+OpenCode picks it up automatically via the `"rules/*.md"` glob in `opencode.json`. Claude Code uses its own CLAUDE.md (AGENTS.md) for rules.
