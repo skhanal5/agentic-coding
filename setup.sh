@@ -59,8 +59,8 @@ install_target "~/.claude/skills"     "$REPO_DIR/skills"                        
 # install_target "~/.claude/rules"      "$REPO_DIR/rules"                           "$HOME/.claude/rules"               -d "[R]eplace  [S]kip"           S
 install_target "opencode.json"        "$REPO_DIR/.config/opencode/opencode.json"  "$HOME/.config/opencode/opencode.json" -f "[O]verwrite  [S]kip"     S
 # No longer copy rules directory as we don't use rules
-install_target "AGENTS.md" "$REPO_DIR/AGENTS.md" "$HOME/.config/opencode/AGENTS.md" -f "[O]verwrite  [S]kip" S
-install_target "CLAUDE.md" "$REPO_DIR/AGENTS.md" "$HOME/.claude/CLAUDE.md" -f "[O]verwrite  [S]skip" S
+install_target "AGENTS.md" "$REPO_DIR/core/AGENTS.md" "$HOME/.config/opencode/AGENTS.md" -f "[O]verwrite  [S]kip" S
+install_target "CLAUDE.md" "$REPO_DIR/core/AGENTS.md" "$HOME/.claude/CLAUDE.md" -f "[O]verwrite  [S]skip" S
 
 echo
 echo "Done!"
