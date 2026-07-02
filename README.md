@@ -16,7 +16,7 @@ The script copies:
 - `core/AGENTS.md` → `~/.config/opencode/AGENTS.md`
 - `core/AGENTS.md` (for Claude) → `~/.claude/CLAUDE.md`
 
-Running the script again will prompt you before overwriting existing files.
+Running the script again will overwrite the existing configuration without further prompts.
 
 ## Adding a skill
 ```bash
@@ -37,7 +37,7 @@ The skill is automatically discovered by the `skill` tool; no further registrati
 Create a Markdown file under `core/` (or any directory you prefer) that contains the policy text.  The file will be copied to the global Opencode location by `setup.sh`.  OpenCode automatically loads any `*.md` files referenced by `opencode.json`.
 
 ## Updating configuration
-Whenever you modify a skill or rule, re‑run `~/agentic-coding/setup.sh` to propagate the changes to your global config.  The script will ask whether to merge, replace, or skip each file.
+Whenever you modify a skill or rule, re‑run `~/agentic-coding/setup.sh` to propagate the changes to your global config. The script will overwrite the relevant folders automatically.
 
 ---
 *This repository contains only configuration and documentation – no runtime code.*

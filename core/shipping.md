@@ -1,7 +1,7 @@
 # Shipping Policy
 
 Read this before creating or finalizing a Pull Request.
-Assumes `branching.md` and `testing-and-review.md` have already been
+Assumes `branch.md` and `testing-and-review.md` have already been
 followed — this file governs what happens once code is ready to leave
 the branch.
 
@@ -62,7 +62,7 @@ Before creating a PR, output this checklist explicitly:
 - [ ] PR size <500 lines, or oversize explicitly flagged
 - [ ] No TODOs left unresolved
 - [ ] No deferred work exists
-- [ ] Branch follows naming convention (see `branching.md`)
+- [ ] Branch follows naming convention (see `branch.md`)
 - [ ] Change is reversible
 
 If any item is unsatisfied → STOP and return to the appropriate phase.

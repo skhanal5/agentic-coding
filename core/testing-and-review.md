@@ -1,7 +1,7 @@
 # Testing and Code Review
 
 Read this once implementation begins, and before requesting any review
-or PR. Assumes `workflow.md` has already been followed for planning
+or PR. Assumes `workflows.md` has already been followed for planning
 and scope.
 
 ---
@@ -17,7 +17,7 @@ Before considering work complete:
 - Run the `code-review` skill if invoked or relevant; otherwise perform
   an equivalent structured self-review against this document
 
-If verification fails → return to Implementation in `workflow.md`.
+If verification fails → return to Implementation in `workflows.md`.
 
 ---
 

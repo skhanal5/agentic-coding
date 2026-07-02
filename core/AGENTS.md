@@ -22,7 +22,7 @@ everything for a trivial question or a one-line fix.
 
 - Never push or commit directly to `main`, and never merge or self-merge
   a Pull Request without explicit in-session instruction (e.g. "merge
-  this PR"). Full detail lives in `branching.md` and `shipping.md` — but
+  this PR"). Full detail lives in `branch.md` and `shipping.md` — but
   this floor applies even before either file is read.
 
 ---
@@ -42,8 +42,8 @@ condition doesn't match the current task.
 
 | File | What | When to read |
 |---|---|---|
-| `workflow.md` | Understand → Plan → Implement discipline, scope control, standing stop conditions | Any non-trivial code change — new feature, bug fix, multi-file edit. Skip for read-only questions or single-line fixes. |
-| `branching.md` | Branch naming convention, feature-branch requirement | Before creating any branch or commit |
+| `workflows.md` | Understand → Plan → Implement discipline, scope control, standing stop conditions | Any non-trivial code change — new feature, bug fix, multi-file edit. Skip for read-only questions or single-line fixes. |
+| `branch.md` | Branch naming convention, feature-branch requirement | Before creating any branch or commit |
 | `testing-and-review.md` | Test policy, code-review gate, handling of fixable vs. blocked issues | Once implementation begins, and before requesting any review or PR |
 | `shipping.md` | PR structure, preflight checklist, commit hygiene, definition of done | Before creating or finalizing a Pull Request |
 
