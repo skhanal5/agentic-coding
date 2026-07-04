@@ -1,8 +1,13 @@
+---
+name: testing-and-review
+description: Test policy, code-review gate, and handling of fixable vs. blocked issues. Load once implementation begins, before requesting any review or PR.
+---
+
 # Testing and Code Review
 
 Read this once implementation begins, and before requesting any review
-or PR. Assumes `workflows.md` has already been followed for planning
-and scope.
+or PR. Assumes the `workflow` skill has already been followed for
+planning and scope.
 
 ---
 
@@ -17,7 +22,8 @@ Before considering work complete:
 - Run the `code-review` skill if invoked or relevant; otherwise perform
   an equivalent structured self-review against this document
 
-If verification fails → return to Implementation in `workflows.md`.
+If verification fails → return to Implementation in the `workflow`
+skill.
 
 ---
 
@@ -34,10 +40,10 @@ If verification fails → return to Implementation in `workflows.md`.
 - Follow TDD-style reasoning when practical
 
 **Exception:** if splitting a PR to hit the size target (see
-`shipping.md`) would break the same-PR test requirement — i.e. tests
-would have to cover an artificially incomplete feature — prefer the
-larger PR and flag the size in the PR description instead of forcing a
-split that breaks test coverage.
+the `shipping` skill) would break the same-PR test requirement — i.e.
+tests would have to cover an artificially incomplete feature — prefer
+the larger PR and flag the size in the PR description instead of
+forcing a split that breaks test coverage.
 
 ---
 
@@ -76,4 +82,4 @@ systems outside the current task's plan to resolve)
 - PR creation is allowed only once: code review has been run, all
   fixable issues are resolved, and any blocked issues are explicitly
   acknowledged by the user — not silently dropped. A blocked task is
-  not done; see `shipping.md` (Definition of Done).
+  not done; see the `shipping` skill (Definition of Done).

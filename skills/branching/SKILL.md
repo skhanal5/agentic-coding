@@ -1,3 +1,8 @@
+---
+name: branching
+description: Branch naming convention and feature-branch requirement. Load before creating any branch or commit.
+---
+
 # Branching Policy
 
 Read this before creating any branch or commit.

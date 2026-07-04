@@ -14,7 +14,10 @@ fi
 
 echo "Setting up global config from $REPO_DIR"
 
-# Copy skills (overwrite)
+# Copy skills to both OpenCode and Claude config directories (overwrite)
+mkdir -p "$HOME/.config/opencode/skills"
+cp -R "$REPO_DIR/skills/." "$HOME/.config/opencode/skills/"
+
 mkdir -p "$HOME/.claude/skills"
 cp -R "$REPO_DIR/skills/." "$HOME/.claude/skills/"
 
@@ -22,11 +25,11 @@ cp -R "$REPO_DIR/skills/." "$HOME/.claude/skills/"
 mkdir -p "$HOME/.config/opencode"
 cp -R "$REPO_DIR/.config/opencode/opencode.json" "$HOME/.config/opencode/"
 
-# Copy all policy markdown files (core directory) to both OpenCode and Claude config directories (overwrite)
+# Copy AGENTS.md to both OpenCode and Claude config directories (overwrite)
 mkdir -p "$HOME/.config/opencode"
-cp -R "$REPO_DIR/core/." "$HOME/.config/opencode/"
+cp "$REPO_DIR/AGENTS.md" "$HOME/.config/opencode/"
 
 mkdir -p "$HOME/.claude"
-cp -R "$REPO_DIR/core/." "$HOME/.claude/"
+cp "$REPO_DIR/AGENTS.md" "$HOME/.claude/"
 
 echo "Setup complete."

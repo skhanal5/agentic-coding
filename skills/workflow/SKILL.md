@@ -1,8 +1,13 @@
+---
+name: workflow
+description: Understand → Plan → Implement discipline, scope control, and standing stop conditions for any non-trivial code change, new feature, bug fix, or multi-file edit. Skip for read-only questions or single-line fixes.
+---
+
 # Workflow Discipline
 
 Read this before starting any non-trivial code change — a new feature,
 a bug fix, or anything beyond a single-line edit or a read-only
-question. Skip it for trivial asks, but the floor in `CLAUDE.md`
+question. Skip it for trivial asks, but the floor in `AGENTS.md`
 (scope, no unrelated file changes) still applies regardless.
 
 ---
@@ -51,7 +56,7 @@ No implementation may begin without an approved plan.
 STOP and return to Planning if new complexity appears mid-implementation.
 
 Once implementation is underway or complete, move to
-`testing-and-review.md` before considering the change shippable.
+the `testing-and-review` skill before considering the change shippable.
 
 ---
 
@@ -75,7 +80,7 @@ you are:
 - architectural uncertainty
 - multi-file changes not yet approved
 - PR size likely to exceed target without a valid exception (see
-  `shipping.md`)
+  the `shipping` skill)
 - missing tests for planned changes
 - unresolved code-review issues
 - any uncertainty about correctness
