@@ -13,8 +13,8 @@ git clone <url> ~/agentic-coding
 ```
 
 The script copies:
-- `skills/` → `~/.config/opencode/skills/` and `~/.claude/skills/`
-- `AGENTS.md` → `~/.config/opencode/` and `~/.claude/`
+- `skills/` → `~/.config/opencode/skills/`, `~/.claude/skills/`, and `~/.codex/skills/`
+- `AGENTS.md` → `~/.config/opencode/`, `~/.claude/`, and `~/.codex/`
 - `.config/opencode/opencode.json` → `~/.config/opencode/opencode.json`
 
 Running the script again will overwrite the existing configuration without further prompts.

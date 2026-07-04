@@ -3,33 +3,59 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-echo "WARNING: This script will OVERWRITE the following folders and their contents:"
-printf "  %s\n" "$HOME/.config/opencode" "$HOME/.claude"
-read -rp "Do you want to continue? (y/N): " response
-response=$(printf '%s' "$response" | tr '[:upper:]' '[:lower:]')
-if [[ "$response" != "y" ]]; then
-  echo "Aborted. No changes were made."
-  exit 1
+echo "Select agents to set up (space-separated numbers):"
+printf "  1) OpenCode   (~/.config/opencode)\n"
+printf "  2) Claude     (~/.claude)\n"
+printf "  3) Codex      (~/.codex)\n"
+read -rp "Enter selection: " selection
+
+setup_agent() {
+  local name="$1"
+  local dir="$2"
+  local copy_opencode_json="$3"
+
+  echo ""
+  echo "Setting up $name..."
+
+  if [ -d "$dir" ]; then
+    read -rp "  WARNING: $dir already exists and will be overwritten. Continue? (y/N): " response
+    response=$(printf '%s' "$response" | tr '[:upper:]' '[:lower:]')
+    if [ "$response" != "y" ]; then
+      echo "  Skipped."
+      return
+    fi
+  fi
+
+  mkdir -p "$dir/skills"
+  cp -R "$REPO_DIR/skills/." "$dir/skills/"
+  echo "  skills/ → $dir/skills/"
+
+  cp "$REPO_DIR/AGENTS.md" "$dir/"
+  echo "  AGENTS.md → $dir/"
+
+  if [ "$copy_opencode_json" = "yes" ]; then
+    mkdir -p "$dir"
+    cp "$REPO_DIR/.config/opencode/opencode.json" "$dir/"
+    echo "  opencode.json → $dir/"
+  fi
+
+  echo "  ✓ $name setup complete."
+}
+
+any=false
+for num in $selection; do
+  case "$num" in
+    1) setup_agent "OpenCode" "$HOME/.config/opencode" "yes"; any=true ;;
+    2) setup_agent "Claude" "$HOME/.claude" "no"; any=true ;;
+    3) setup_agent "Codex" "$HOME/.codex" "no"; any=true ;;
+  esac
+done
+
+if [ "$any" = false ]; then
+  echo ""
+  echo "No agents selected. Nothing done."
+  exit 0
 fi
 
-echo "Setting up global config from $REPO_DIR"
-
-# Copy skills to both OpenCode and Claude config directories (overwrite)
-mkdir -p "$HOME/.config/opencode/skills"
-cp -R "$REPO_DIR/skills/." "$HOME/.config/opencode/skills/"
-
-mkdir -p "$HOME/.claude/skills"
-cp -R "$REPO_DIR/skills/." "$HOME/.claude/skills/"
-
-# Copy opencode.json (overwrite)
-mkdir -p "$HOME/.config/opencode"
-cp -R "$REPO_DIR/.config/opencode/opencode.json" "$HOME/.config/opencode/"
-
-# Copy AGENTS.md to both OpenCode and Claude config directories (overwrite)
-mkdir -p "$HOME/.config/opencode"
-cp "$REPO_DIR/AGENTS.md" "$HOME/.config/opencode/"
-
-mkdir -p "$HOME/.claude"
-cp "$REPO_DIR/AGENTS.md" "$HOME/.claude/"
-
-echo "Setup complete."
+echo ""
+echo "Done."
