@@ -1,6 +1,6 @@
 # agentic-coding
 
-A tiny repository that houses **shared skills and policies** for both OpenCode and Claude Code. The files here are never executed directly; they are copied into the user's global configuration directories so the agents can discover and enforce the same rules across environments.
+A tiny repository that houses **shared skills and policies** for OpenCode, Claude Code, and Codex. The files here are never executed directly; they are copied into the user's global configuration directories so the agents can discover and enforce the same rules across environments.
 
 ## Quick setup
 
@@ -17,7 +17,7 @@ The script copies:
 - `AGENTS.md` → `~/.config/opencode/`, `~/.claude/`, and `~/.codex/`
 - `.config/opencode/opencode.json` → `~/.config/opencode/opencode.json`
 
-Running the script again will overwrite the existing configuration without further prompts.
+The script will prompt which agents to configure and warn before overwriting an existing directory.
 
 ## Structure
 
@@ -53,7 +53,7 @@ The skill is automatically discovered by the `skill` tool; no further registrati
 
 ## Updating configuration
 
-Whenever you add or modify a skill, re-run `~/agentic-coding/setup.sh` to propagate the changes to your global config directories. The script will overwrite the relevant folders automatically.
+Whenever you add or modify a skill, re-run `~/agentic-coding/setup.sh` to propagate the changes to your global config directories. The script will prompt which agents to reconfigure.
 
 ---
 
