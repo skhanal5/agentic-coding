@@ -1,9 +1,14 @@
+---
+name: shipping
+description: PR structure, preflight checklist, commit hygiene, and definition of done. Load before creating or finalizing a Pull Request.
+---
+
 # Shipping Policy
 
 Read this before creating or finalizing a Pull Request.
-Assumes `branch.md` and `testing-and-review.md` have already been
-followed — this file governs what happens once code is ready to leave
-the branch.
+Assumes the `branching` and `testing-and-review` skills have already
+been followed — this file governs what happens once code is ready to
+leave the branch.
 
 ---
 
@@ -23,8 +28,8 @@ Every PR must include:
 - If exceeded: STOP and propose splitting into multiple PRs
 
 **Exception:** if splitting would break the same-PR test requirement
-(see `testing-and-review.md`) — i.e. tests would have to cover an
-artificially incomplete feature — prefer the larger PR and flag the
+(see the `testing-and-review` skill) — i.e. tests would have to cover
+an artificially incomplete feature — prefer the larger PR and flag the
 size in the PR description instead of forcing a split that breaks test
 coverage.
 
@@ -58,11 +63,11 @@ Before creating a PR, output this checklist explicitly:
 - [ ] All tests added and passing
 - [ ] code-review executed
 - [ ] code-review issues resolved (if blocked, STOP per
-      `testing-and-review.md` — do not reach this checklist)
+      the `testing-and-review` skill — do not reach this checklist)
 - [ ] PR size <500 lines, or oversize explicitly flagged
 - [ ] No TODOs left unresolved
 - [ ] No deferred work exists
-- [ ] Branch follows naming convention (see `branch.md`)
+- [ ] Branch follows naming convention (see the `branching` skill)
 - [ ] Change is reversible
 
 If any item is unsatisfied → STOP and return to the appropriate phase.
@@ -91,8 +96,8 @@ A task is complete only when:
 - implementation is finished
 - tests are added and passing
 - code review has been executed and all issues resolved (a blocked
-  task is not done — it remains stopped per `testing-and-review.md`
-  until you respond)
+  task is not done — it remains stopped per the `testing-and-review`
+  skill until you respond)
 - a PR has been created
 - the PR is in scope and within the size target (or oversize is
   explicitly flagged)
