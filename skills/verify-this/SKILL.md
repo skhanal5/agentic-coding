@@ -1,6 +1,6 @@
 ---
 name: verify-this
-description: Verify a claim with fresh local evidence: restate it falsifiably, capture baseline and treatment, compare artifacts, and return VERIFIED, NOT VERIFIED, or INCONCLUSIVE.
+description: This skill should be used when the user asks to verify a claim with fresh local evidence. Use when the user asks to restate a claim, capture baseline and treatment, and compare artifacts.
 ---
 
 # Verify This

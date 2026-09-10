@@ -1,7 +1,6 @@
 ---
 name: code-review
-description: Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth. Use for a thermo-nuclear code quality review, thermonuclear review, deep code quality audit, or especially harsh maintainability review.
-disable-model-invocation: true
+description: This skill should be used when the user asks to review code, run a thermo-nuclear review, check maintainability, or audit abstraction quality, giant files, or spaghetti growth. Use for deep code quality and code judo reviews.
 ---
 
 # Thermo-Nuclear Code Quality Review

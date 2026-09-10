@@ -1,6 +1,6 @@
 ---
 name: deslop
-description: Remove AI-generated code slop and clean up code style
+description: This skill should be used when the user asks to clean up code style, remove AI-generated slop, or deslop code.
 ---
 
 # Remove AI code slop
