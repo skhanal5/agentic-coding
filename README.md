@@ -14,7 +14,7 @@ git clone <url> ~/agentic-coding
 
 The script copies:
 - `skills/` → `~/.config/opencode/skills/`, `~/.claude/skills/`, and `~/.codex/skills/`
-- `AGENTS.md` → `~/.config/opencode/`, `~/.claude/`, and `~/.codex/`
+- `templates/AGENTS.md` → `~/.config/opencode/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.codex/AGENTS.md`
 - `.config/opencode/opencode.json` → `~/.config/opencode/opencode.json`
 
 Running the script again will overwrite the existing configuration without further prompts.
@@ -22,7 +22,7 @@ Running the script again will overwrite the existing configuration without furth
 ## Structure
 
 ```
-AGENTS.md                     — Entry point: hard constraint + execution rule
+templates/AGENTS.md           — Entry point: hard constraint + execution rule (global template, not repo-local)
 skills/                       — Auto-discovered skills loaded on demand
   workflow/SKILL.md           —   Understand → Plan → Implement discipline
   branching/SKILL.md          —   Branch naming and feature-branch requirement
