@@ -1,6 +1,6 @@
 ---
 name: fix-merge-conflicts
-description: Resolve merge conflicts non-interactively, validate build and tests, and finalize conflict resolution
+description: This skill should be used when the user asks to fix merge conflicts or resolve conflicts non-interactively. Use when the user asks to validate builds and tests after a merge.
 ---
 
 # Fix merge conflicts

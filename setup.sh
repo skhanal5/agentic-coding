@@ -30,8 +30,13 @@ setup_agent() {
   cp -R "$REPO_DIR/skills/." "$dir/skills/"
   echo "  skills/ → $dir/skills/"
 
-  cp "$REPO_DIR/AGENTS.md" "$dir/"
-  echo "  AGENTS.md → $dir/"
+  if [ "$name" = "Claude" ]; then
+    cp "$REPO_DIR/templates/AGENTS.md" "$dir/CLAUDE.md"
+    echo "  templates/AGENTS.md → $dir/CLAUDE.md"
+  else
+    cp "$REPO_DIR/templates/AGENTS.md" "$dir/AGENTS.md"
+    echo "  templates/AGENTS.md → $dir/AGENTS.md"
+  fi
 
   if [ "$copy_opencode_json" = "yes" ]; then
     mkdir -p "$dir"
