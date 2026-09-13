@@ -165,6 +165,25 @@ Prioritize findings in this order:
 Do not flood the review with low-value nits if there are larger structural issues.
 Prefer a smaller number of high-conviction comments over a long list of cosmetic notes.
 
+## Review Record
+
+Every review starts and ends with a fixed line. Together they are the record that the review happened. The `shipping` gate checks it.
+
+Start with this line. Get the SHA from `git rev-parse --short HEAD` on the branch under review.
+
+```
+Reviewed <branch> at <SHA> against <base>.
+```
+
+End with exactly one of these lines, decided by the Approval Bar below:
+
+```
+Verdict: Approved
+Verdict: Changes needed. <one-line reason>
+```
+
+Review the diff as it is on disk now. Read the full diff with `git diff <base>...HEAD`, not from memory of earlier work. A new commit after the review needs a new review.
+
 ## Approval Bar
 
 Do not approve merely because behavior seems correct.
