@@ -41,12 +41,16 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 
 ## 3. Code Review Gate
 
-- Load `code-review` skill and run it
+- Invoke the `code-review` skill on this branch. Do it after the last commit and before you create the PR.
+- Every PR branch needs its own invocation. These do not count as a review:
+  - The skill's text still in context from an earlier run or another branch
+  - A review done by hand against the skill's checklist
+- The review output includes a record of the commit it covered. See Review Record in `code-review`. The checklist below asks for the SHA in that record.
 - Do not skip this step. The checklist below requires it.
 
 **If code review finds fixable issues:**
 - Fix them in the same PR
-- Rerun `code-review` after each fix
+- Invoke `code-review` again after each fix, on the new head commit
 - Repeat until no fixable issues remain
 - Fixable means the issue is in code you added or changed and can be fixed without expanding scope beyond the current plan
 
@@ -68,7 +72,7 @@ Before you create a PR, output this checklist exactly and check each item. All i
 - [ ] Feature is fully implemented per plan in `workflow`
 - [ ] Scope matches plan. No unintended file changes
 - [ ] All tests are added and passing per `testing`
-- [ ] `code-review` was run and all fixable issues are resolved
+- [ ] `code-review` invoked on this branch at head commit <SHA>, with verdict Approved and no commits since
 - [ ] PR size is less than 500 lines, or overage is flagged with reason
 - [ ] No TODOs left unresolved
 - [ ] No deferred work exists
@@ -78,6 +82,8 @@ Before you create a PR, output this checklist exactly and check each item. All i
 - [ ] PR title and description will follow `create-a-pr`
 - [ ] Change is reversible
 ```
+
+Replace <SHA> with the SHA from the review record. It must match `git rev-parse --short HEAD`. If you cannot point to a `code-review` invocation on this branch whose record shows that SHA, the item is false.
 
 If any item is not true:
 → STOP. Return to the correct `workflow` state and fix it. Do not create a PR.
@@ -92,7 +98,7 @@ A task is done only when all of these are true:
 
 - Implementation is finished per `workflow`
 - Tests are added and passing per `testing`
-- `code-review` has been run and all fixable issues are resolved
+- `code-review` has been invoked on the final head commit, with verdict Approved
 - PR size check above is met or flagged
 - Preflight checklist above is complete
 - PR has been created with title and description per `create-a-pr`
