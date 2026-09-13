@@ -41,7 +41,7 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 
 ## 3. Code Review Gate
 
-- Invoke the `code-review` skill on this branch. Do it after the last code commit and before you create the PR.
+- Invoke the `code-review` skill on this branch. Do it after the last commit and before you create the PR.
 - Every PR branch needs its own invocation. These do not count as a review:
   - The skill's text still in context from an earlier run or another branch
   - A review done by hand against the skill's checklist
