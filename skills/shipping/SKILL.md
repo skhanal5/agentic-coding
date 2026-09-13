@@ -45,7 +45,7 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 - Every PR branch needs its own invocation. These do not count as a review:
   - The skill's text still in context from an earlier run or another branch
   - A review done by hand against the skill's checklist
-- The review output starts with the head commit SHA it covered. The checklist below asks for that SHA.
+- The review output includes a record of the commit it covered. See Review Record in `code-review`. The checklist below asks for the SHA in that record.
 - Do not skip this step. The checklist below requires it.
 
 **If code review finds fixable issues:**
