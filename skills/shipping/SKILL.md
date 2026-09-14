@@ -28,9 +28,18 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 
 **Split rules:**
 - Each split PR must be independently functional
-- Each split PR must pass tests on its own
-- No split PR may depend on incomplete work in another split PR
-- No stacked PRs
+- Each split PR must pass tests at its own head commit
+- A split PR may stack on another split PR
+
+**Stacked PRs (via `gh stack`):**
+- GitHub natively supports stacked PRs via `gh stack` (`gh extension install github/gh-stack` — https://gh.io/stacks). Use `gh stack` instead of manual base-branch handling.
+- Create and manage the stack with `gh stack init` (start or adopt a stack), `gh stack add <branch>` (add a layer), `gh stack submit` (push branches and create or update PRs with correct bases), `gh stack sync` (fetch, cascade-rebase, and push), `gh stack rebase` (resolve conflicts), and `gh stack view` (inspect stack).
+- Base the stacked PR on the parent PR's branch, not on `main`. `gh stack submit` sets the base for you.
+- Make the first bullet of its Background section the PR it stacks on. Example: `Stacks on #48.`
+- Review and test each PR in the stack at its own head commit. The `code-review` gate applies to each one.
+- Measure a stacked PR against the parent's branch, not `main`. That is the `<base>` for its review diff and for its size count.
+- When the parent gets new commits, run `gh stack sync` (or `gh stack rebase` then push) and run the gates again. After the parent merges, `gh stack sync --prune` rebases the child onto `main`, updates its base to `main`, and prunes the merged branch. Run the gates again.
+- If you rebase manually and the parent was squash-merged, use `git rebase --onto main <parent-branch>`. A plain `git rebase main` replays the parent's own commits on top of their squashed copy. `gh stack sync` handles this case for you.
 
 **Exception:**
 - If a split would force tests to cover an incomplete feature, keep the larger PR
