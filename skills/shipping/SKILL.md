@@ -29,7 +29,7 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 **Split rules:**
 - Each split PR must be independently functional
 - Each split PR must pass tests at its own head commit
-- A split PR may stack on another split PR. Stacked PRs are allowed.
+- A split PR may stack on another split PR
 
 **Stacked PRs:**
 - Base the stacked PR on the parent PR's branch, not on `main`
@@ -38,6 +38,7 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 - Measure a stacked PR against the parent's branch, not `main`. That is the `<base>` for its review diff and for its size count.
 - When the parent gets new commits, rebase the stacked PR onto the parent and run the gates again
 - After the parent merges, rebase the stacked PR onto `main`, change its base to `main`, and run the gates again
+- If the parent was squash-merged, rebase with `git rebase --onto main <parent-branch>`. A plain `git rebase main` replays the parent's own commits on top of their squashed copy.
 
 **Exception:**
 - If a split would force tests to cover an incomplete feature, keep the larger PR
