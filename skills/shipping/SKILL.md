@@ -35,6 +35,8 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 - Base the stacked PR on the parent PR's branch, not on `main`
 - Make the first bullet of its Background section the PR it stacks on. Example: `Stacks on #48.`
 - Review and test each PR in the stack at its own head commit. The `code-review` gate applies to each one.
+- Measure a stacked PR against the parent's branch, not `main`. That is the `<base>` for its review diff and for its size count.
+- When the parent gets new commits, rebase the stacked PR onto the parent and run the gates again
 - After the parent merges, rebase the stacked PR onto `main`, change its base to `main`, and run the gates again
 
 **Exception:**
