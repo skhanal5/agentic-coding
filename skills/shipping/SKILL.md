@@ -28,9 +28,14 @@ This skill does not duplicate rules from other skills. For branch, commit, comme
 
 **Split rules:**
 - Each split PR must be independently functional
-- Each split PR must pass tests on its own
-- No split PR may depend on incomplete work in another split PR
-- No stacked PRs
+- Each split PR must pass tests at its own head commit
+- A split PR may stack on another split PR. Stacked PRs are allowed.
+
+**Stacked PRs:**
+- Base the stacked PR on the parent PR's branch, not on `main`
+- Make the first bullet of its Background section the PR it stacks on. Example: `Stacks on #48.`
+- Review and test each PR in the stack at its own head commit. The `code-review` gate applies to each one.
+- After the parent merges, rebase the stacked PR onto `main`, change its base to `main`, and run the gates again
 
 **Exception:**
 - If a split would force tests to cover an incomplete feature, keep the larger PR
