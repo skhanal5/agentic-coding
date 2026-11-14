@@ -1,0 +1,42 @@
+[
+  {
+    "query": "commit this",
+    "should_trigger": true
+  },
+  {
+    "query": "write a good commit message for what's staged",
+    "should_trigger": true
+  },
+  {
+    "query": "I changed the retry logic and fixed a typo in the readme. how should I commit these",
+    "should_trigger": true
+  },
+  {
+    "query": "stage the right files and commit the rate limiting change",
+    "should_trigger": true
+  },
+  {
+    "query": "is my commit message 'updated code and fixed issue' ok?",
+    "should_trigger": true
+  },
+  {
+    "query": "create a PR for this branch",
+    "should_trigger": false
+  },
+  {
+    "query": "make me a branch for the next feature",
+    "should_trigger": false
+  },
+  {
+    "query": "amend the commit message on a PR that was already merged",
+    "should_trigger": false
+  },
+  {
+    "query": "show me the git log for the last week",
+    "should_trigger": false
+  },
+  {
+    "query": "revert the last deploy",
+    "should_trigger": false
+  }
+]

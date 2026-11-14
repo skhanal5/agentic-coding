@@ -1,0 +1,42 @@
+[
+  {
+    "query": "I just merged main into my branch and got conflicts in 6 files, can you fix them",
+    "should_trigger": true
+  },
+  {
+    "query": "git status shows both modified in package-lock.json and src/api.ts. resolve the conflicts and make sure it still builds",
+    "should_trigger": true
+  },
+  {
+    "query": "rebase onto main stopped with conflict markers in config.yaml. sort it out",
+    "should_trigger": true
+  },
+  {
+    "query": "resolve the merge conflicts non-interactively and run the tests after",
+    "should_trigger": true
+  },
+  {
+    "query": "there are <<<<<<< markers all over server/routes.js after my pull. please clean up",
+    "should_trigger": true
+  },
+  {
+    "query": "explain what a merge conflict is",
+    "should_trigger": false
+  },
+  {
+    "query": "create a new branch called fix/login",
+    "should_trigger": false
+  },
+  {
+    "query": "squash my last 4 commits into one",
+    "should_trigger": false
+  },
+  {
+    "query": "push my branch and open a PR",
+    "should_trigger": false
+  },
+  {
+    "query": "write a git hook that blocks commits to main",
+    "should_trigger": false
+  }
+]

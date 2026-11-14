@@ -1,0 +1,42 @@
+[
+  {
+    "query": "add a comment explaining why this retry loop caps at 30 seconds in client.go",
+    "should_trigger": true
+  },
+  {
+    "query": "this is a hack to get around the empty cache after deploy. can you label it properly in the code",
+    "should_trigger": true
+  },
+  {
+    "query": "review the comments in my diff. are they clear and plain english?",
+    "should_trigger": true
+  },
+  {
+    "query": "document this workaround for issue 482 right above the fallback wait",
+    "should_trigger": true
+  },
+  {
+    "query": "write a short comment for the regex in validators.py, nobody will understand it",
+    "should_trigger": true
+  },
+  {
+    "query": "write a README section about retry behavior",
+    "should_trigger": false
+  },
+  {
+    "query": "remove all the useless comments from my diff",
+    "should_trigger": false
+  },
+  {
+    "query": "write a commit message for the retry change",
+    "should_trigger": false
+  },
+  {
+    "query": "generate API docs from the docstrings",
+    "should_trigger": false
+  },
+  {
+    "query": "translate the comments in this file to Spanish",
+    "should_trigger": false
+  }
+]

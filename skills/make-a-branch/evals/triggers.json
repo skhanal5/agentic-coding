@@ -1,0 +1,42 @@
+[
+  {
+    "query": "make a branch for adding retry logic to the http client",
+    "should_trigger": true
+  },
+  {
+    "query": "what should I call my branch? I'm fixing the rate limiter bug on login",
+    "should_trigger": true
+  },
+  {
+    "query": "is `feature/Add_Retry_Logic` a valid branch name for this repo?",
+    "should_trigger": true
+  },
+  {
+    "query": "start a new branch for updating the readme",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm about to add oauth and also fix some css. how do I branch this",
+    "should_trigger": true
+  },
+  {
+    "query": "write the PR description for my branch",
+    "should_trigger": false
+  },
+  {
+    "query": "commit my changes",
+    "should_trigger": false
+  },
+  {
+    "query": "delete the old local branches that are already merged",
+    "should_trigger": false
+  },
+  {
+    "query": "explain how git branches work",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the merge conflicts on this branch",
+    "should_trigger": false
+  }
+]

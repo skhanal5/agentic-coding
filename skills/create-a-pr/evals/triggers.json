@@ -1,0 +1,42 @@
+[
+  {
+    "query": "create a PR for this branch",
+    "should_trigger": true
+  },
+  {
+    "query": "write me a PR description for the retry logic change. title and body please",
+    "should_trigger": true
+  },
+  {
+    "query": "open a pull request, the work is done and pushed on feat/add-retry-logic",
+    "should_trigger": true
+  },
+  {
+    "query": "does my PR title 'Added new stuff to the login' follow our format?",
+    "should_trigger": true
+  },
+  {
+    "query": "draft the PR body with background, changes, testing and risks for the cache change",
+    "should_trigger": true
+  },
+  {
+    "query": "commit what I have staged with a good message",
+    "should_trigger": false
+  },
+  {
+    "query": "what's the right name for my branch for the rate limit fix?",
+    "should_trigger": false
+  },
+  {
+    "query": "review the code in PR #48 for quality issues",
+    "should_trigger": false
+  },
+  {
+    "query": "merge PR #48 into main",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize the changes between main and my branch for my own notes",
+    "should_trigger": false
+  }
+]

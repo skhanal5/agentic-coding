@@ -1,0 +1,42 @@
+[
+  {
+    "query": "deslop this branch, it has the usual AI junk",
+    "should_trigger": true
+  },
+  {
+    "query": "clean up the AI generated slop in my diff vs main. lots of pointless comments and try/catch everywhere",
+    "should_trigger": true
+  },
+  {
+    "query": "remove the over-defensive null checks and noisy comments you added in the last few commits",
+    "should_trigger": true
+  },
+  {
+    "query": "my coworker said the diff looks like ChatGPT wrote it. can you make it match the style of the surrounding files",
+    "should_trigger": true
+  },
+  {
+    "query": "simplify the deeply nested ifs I introduced in parser.rs, use early returns, only on my branch changes",
+    "should_trigger": true
+  },
+  {
+    "query": "write a new feature for exporting users to csv",
+    "should_trigger": false
+  },
+  {
+    "query": "review the architecture of my PR for modularity",
+    "should_trigger": false
+  },
+  {
+    "query": "explain how the auth middleware works",
+    "should_trigger": false
+  },
+  {
+    "query": "add docstrings to every function in utils.py",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the failing test in test_orders.py",
+    "should_trigger": false
+  }
+]
