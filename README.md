@@ -1,60 +1,88 @@
 # agentic-coding
 
-A tiny repository that houses **shared skills and policies** for OpenCode, Claude Code, and Codex. The files here are never executed directly; they are copied into the user's global configuration directories so the agents can discover and enforce the same rules across environments.
+A small repository of **shared skills and policy** for Claude Code. The files here are never run by the agent directly. `setup.sh` copies them into `~/.claude`.
 
 ## Quick setup
 
 ```bash
-# Clone the repo (if you haven't already)
 git clone <url> ~/agentic-coding
-
-# Install the configuration files
 ~/agentic-coding/setup.sh
 ```
 
 The script copies:
-- `skills/` → `~/.config/opencode/skills/`, `~/.claude/skills/`, and `~/.codex/skills/`
-- `templates/AGENTS.md` → `~/.config/opencode/AGENTS.md`, `~/.claude/CLAUDE.md`, and `~/.codex/AGENTS.md`
-- `.config/opencode/opencode.json` → `~/.config/opencode/opencode.json`
+- `skills/` to `~/.claude/skills/` (without `evals/`)
+- `templates/CLAUDE.md` to `~/.claude/CLAUDE.md`
 
-The script will prompt which agents to configure and warn before overwriting an existing directory.
+The script warns before it overwrites an existing skills folder.
 
 ## Structure
 
 ```
-templates/AGENTS.md           — Entry point: hard constraint + execution rule (global template, not repo-local)
-skills/                       — Auto-discovered skills loaded on demand
-  workflow/SKILL.md           —   Understand → Plan → Implement discipline
-  branching/SKILL.md          —   Branch naming and feature-branch requirement
-  testing-and-review/SKILL.md —   Test policy, code-review gate
-  shipping/SKILL.md           —   PR preflight, commit conventions, DoD
-  ...                         —   Other skills (code-review, deslop, etc.)
-.config/opencode/opencode.json — OpenCode configuration
+templates/CLAUDE.md         Global policy: language rules, hard constraint, execution rule
+skills/<name>/SKILL.md      One skill. Loaded when its description matches the task.
+skills/<name>/references/   Long detail that SKILL.md links to. Loaded only when needed.
+skills/<name>/evals/        Trigger evals for the skill. Not installed by setup.sh.
+scripts/check_skills.py     Checks that every skill follows the rules below.
 ```
 
-`AGENTS.md` is intentionally concise — it contains only rules that must fire every session. All workflow, branching, testing, and shipping policies live in skills that are auto-discovered and loaded only when relevant.
+Skills:
+- `workflow`: understand, plan, implement, verify, and PR discipline
+- `make-a-branch`: branch naming and the single-purpose rule
+- `make-a-commit`: small, valid commits with plain messages
+- `make-a-code-comment`: plain comments, bug references, and HACK labels
+- `testing`: test policy and TDD
+- `code-review`: strict maintainability review with a review record
+- `deslop`: remove AI-generated slop from a diff
+- `shipping`: the pre-PR gate, PR size, and the preflight checklist
+- `create-a-pr`: PR title and description format
+- `fix-merge-conflicts`: resolve conflicts and confirm the build
+- `verify-this`: prove a claim with baseline and treatment evidence
+
+`CLAUDE.md` is short. It holds only rules that must apply in every session. Everything else lives in skills.
+
+## Skill rules
+
+- The folder name and the `name` field are the same.
+- The `description` says when to use the skill. It names the requests that should load it.
+- `SKILL.md` is at most 150 lines. Move long detail to `references/` and link to it.
+- Each skill has `evals/triggers.json` with at least 5 prompts that should trigger it and 5 that should not.
+
+Run the check before you open a PR:
+
+```bash
+python3 scripts/check_skills.py
+```
 
 ## Adding a skill
 
-```bash
-mkdir -p skills/<name>
-cat > skills/<name>/SKILL.md <<'EOF'
----
-name: <name>
-description: What this skill does AND when to trigger it
----
+1. Create `skills/<name>/SKILL.md` with `name` and `description` frontmatter.
+2. Write `skills/<name>/evals/triggers.json`. Use realistic prompts. Make the should-not-trigger prompts near misses.
+3. Run the trigger evals and tune the description. See below.
+4. Run `python3 scripts/check_skills.py`.
+5. Run `./setup.sh` to install.
 
-# Instructions for the agent
-...
-EOF
+## Evals
+
+Each `triggers.json` is a list of `{"query": "...", "should_trigger": true|false}`. It tests one thing. The skill description must make Claude load the skill for the right prompts and ignore the wrong ones.
+
+Run the evals with the `skill-creator` scripts. Run them from a folder that has a `.claude/` directory. The runner writes a temporary command file there.
+
+```bash
+SC=<path to the skill-creator skill>
+PYTHONPATH=$SC python3 $SC/scripts/run_eval.py \
+  --eval-set skills/<name>/evals/triggers.json \
+  --skill-path skills/<name> \
+  --runs-per-query 3 --verbose
 ```
 
-The skill is automatically discovered by the `skill` tool; no further registration is required.
+To tune the description, use `$SC/scripts/run_loop.py` with the same arguments plus `--model <model-id>`. It splits the prompts into train and test sets and proposes better descriptions. Apply the best description by hand and run the check again.
+
+These runs are real model runs and cost tokens.
 
 ## Updating configuration
 
-Whenever you add or modify a skill, re-run `~/agentic-coding/setup.sh` to propagate the changes to your global config directories. The script will prompt which agents to reconfigure.
+After you change a skill, run `~/agentic-coding/setup.sh` again.
 
 ---
 
-*This repository contains only configuration and documentation – no runtime code.*
+*This repository holds configuration, docs, and one check script. It has no application code.*
