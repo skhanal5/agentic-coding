@@ -5,99 +5,57 @@ description: This skill should be used when the user asks to create a PR, write 
 
 # Create a PR
 
-Guidelines for PR titles and descriptions
+Guidelines for PR titles and descriptions.
 
----
+## 1. Title
 
-## 1. PR Title
+- Format: `<operation>: <summary>`
+- The operation matches the branch operation from `make-a-branch`: `feat`, `fix`, `chore`, `test`, `docs`, `refactor`, `perf`, `ci`, `build`. Use lowercase.
+- The summary has 2 to 4 plain words. The title mirrors the branch name. Branch `feat/add-retry-logic` gives title `feat: add retry logic`.
+- One short line. No period at the end.
 
-- Format: `<Operation>: <summary>`
-  - `Operation` must match branch operation from `make-a-branch` skill: `feat`, `fix`, `chore`, `test`, `docs`, `refactor`, `perf`, `ci`, `build`
-  - Use lowercase operation
-  - `summary`: 2 to 4 words that describe the change. Use plain words. Keep it short.
-  - Title mirrors branch name. Branch `feat/add-retry-logic` becomes title `feat: add retry logic`
-- Keep title to one short line. No period at end.
+Valid: `feat: add retry logic`, `fix: add rate limiting`, `chore: update readme`.
 
-**Examples (valid):**
-- `feat: add retry logic`
-- `fix: add rate limiting`
-- `chore: update readme`
-- `test: add integ tests`
-
-**Invalid:**
-- `Add retry logic` (missing operation)
-- `feat/add-retry-logic` (branch format, not PR title format)
-- `feat: leverage exponential backoff strat to amortize tail latency` (jargon heavy)
+Invalid:
+- `Add retry logic` (no operation)
+- `feat/add-retry-logic` (branch format)
 - `Feat: Add Retry Logic` (wrong case)
+- `feat: leverage exponential backoff strat to amortize tail latency` (jargon)
 
-If title cannot follow this format:
-→ STOP and ask.
+If the title cannot follow this format, stop and ask.
 
----
+## 2. Description
 
-## 2. PR Description
+A reader with zero knowledge of the codebase must understand it. Use bullets, not paragraphs. Keep it short unless the PR is unusually complex.
 
-Description must be concise and easily understandable by a reader with zero knowledge of the codebase. Prefer bullets over paragraphs. Keep it short unless the PR has unusual complexity that needs more detail.
+Use these headings in this order:
 
-Description has 3 to 4 sections. Use this order and these headings:
+- **Background**: what changes and why. 2 to 4 bullets. Plain terms. For a stacked PR, the first bullet names the parent PR, for example `Stacks on #48.`
+- **Changes**: one bullet per key change. Group related changes. Do not list every file.
+- **Risks**: include only if the PR adds risk. State each risk and its impact or mitigation. Omit the section if there is no risk. Do not add a placeholder.
+- **Testing**: how you validated the change and checked the risks. Name commands or test types.
 
-### Background
-- What is the change and why is it needed
-- Use 2 to 4 bullets
-- Explain the problem or goal in plain terms
+## 3. Language
 
-### Changes
-- What was changed at a high level
-- Use bullets, one bullet per key change
-- Do not list every file. Group related changes.
+- Plain English. ASD-STE100 style: short sentences, simple verbs, active voice, one word per idea.
+- No jargon and no idioms.
+- No em dashes. No semi-colons. Use periods.
+- One idea per bullet.
 
-### Testing
-- How was the change validated
-- How were risks checked if risks exist
-- Use bullets. Include commands or test types when helpful.
-
-### Risks (optional)
-- Include only if the PR introduces risk
-- If no risk, omit this section. Do not add a placeholder.
-- Use bullets to state each risk and its impact or mitigation.
-
----
-
-## 3. Language Standard
-
-- Use plain English that a new reader can understand with no prior context
-- Prefer ASD-STE100 Simplified Technical English:
-  - Use short sentences with one idea per sentence
-  - Use simple verbs and common words
-  - Use active voice
-  - Use the same word for the same idea everywhere
-  - Avoid jargon, idioms, and complex terms
-  - Define a term if you must use it, then use it consistently
-- No em dashes
-- No semi-colons. Use periods to separate ideas.
-- Bullets over paragraphs. Each bullet is one idea.
-
-**Good:**
-- `Fix login retry. Server returned 429 without Retry-After. Added fallback wait.`
-
-**Bad:**
-- `Leverage holistic synergy to ameliorate retry storm via exponential backoff strat` (jargon heavy, not plain English)
-
----
+Good: `Fix login retry. Server returned 429 without Retry-After. Added fallback wait.`
 
 ## 4. Template
 
-Use this template for every PR:
-
 ```
+<operation>: <summary>
+
 ## Background
 - Why this change exists
 - What problem it fixes or what goal it meets
 
 ## Changes
-- High level change 1
-- High level change 2
-- High level change 3
+- High-level change 1
+- High-level change 2
 
 ## Risks
 - Risk 1 and how it is handled (omit section if no risk)
@@ -107,61 +65,15 @@ Use this template for every PR:
 - How you checked risks
 ```
 
-**Example (concise PR):**
+For full examples, read `references/examples.md`.
 
-```
-feat: add retry logic
+## 5. Checklist before creating the PR
 
-## Background
-- App failed on 429 responses. No retry existed.
-- Users saw errors during busy periods.
-
-## Changes
-- Add retry with increasing delay. Start at 1 second. Cap at 30 seconds.
-- Respect Retry-After header when present.
-- Add unit tests for retry logic.
-
-## Testing
-- Ran unit tests. All pass.
-- Tested manually with mock 429 responses. Verified delay and cap.
-```
-
-**Example with risk:**
-
-```
-fix: add rate limiting
-
-## Background
-- Login endpoint had no rate limit. Risk of brute force attacks.
-- Need to limit requests per user.
-
-## Changes
-- Add rate limit of 5 requests per minute on login.
-- Return 429 when limit is reached. Include Retry-After header.
-
-## Risks
-- Valid users may hit limit during retry. Impact is low. Mitigation is clear error message.
-
-## Testing
-- Added integ tests for limit and 429 response.
-- Verified Retry-After header in tests.
-- Manual test with 6 rapid logins. Sixth request returned 429.
-```
-
-If PR is unusually complex, you may add more bullets or a short note under a section, but keep language plain and concise.
-
----
-
-## 5. Checklist Before Creating PR
-
-- [ ] Title follows `<Operation>: <summary>` and matches branch operation
-- [ ] Title is concise and plain English with no jargon
+- [ ] Title is `<operation>: <summary>` and matches the branch operation
+- [ ] Title is short and plain
 - [ ] Description has Background, Changes, Testing, and Risks only if needed
-- [ ] Description uses bullets, not long paragraphs
-- [ ] Description is concise. Longer only if PR has unusual complexity
-- [ ] Language is plain English, follows STE100, no jargon
-- [ ] No em dashes, no semi-colons
-- [ ] Reader with zero context can understand it
+- [ ] Description uses bullets and is concise
+- [ ] Language is plain. No em dashes. No semi-colons.
+- [ ] A reader with zero context can understand it
 
-If any item fails:
-→ Fix before creating PR.
+If any item fails, fix it before creating the PR.
