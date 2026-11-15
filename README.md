@@ -30,7 +30,8 @@ Skills:
 - `make-a-branch`: branch naming and the single-purpose rule
 - `make-a-commit`: small, valid commits with plain messages
 - `make-a-code-comment`: plain comments, bug references, and HACK labels
-- `testing`: test policy and TDD
+- `tdd`: test-first loop of red, green, refactor
+- `testing`: what good tests look like and the PR test rule
 - `code-review`: strict maintainability review with a review record
 - `deslop`: remove AI-generated slop from a diff
 - `shipping`: the pre-PR gate, PR size, and the preflight checklist
