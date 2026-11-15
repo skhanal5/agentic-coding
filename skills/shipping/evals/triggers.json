@@ -1,0 +1,42 @@
+[
+  {
+    "query": "I think I'm ready to ship. what do I need to check before I open the PR?",
+    "should_trigger": true
+  },
+  {
+    "query": "run the pre-PR gate on this branch",
+    "should_trigger": true
+  },
+  {
+    "query": "is my diff too big for one PR? it's about 900 lines",
+    "should_trigger": true
+  },
+  {
+    "query": "do the preflight checklist before I create the pull request",
+    "should_trigger": true
+  },
+  {
+    "query": "my change is over 500 lines. help me split it into stacked PRs",
+    "should_trigger": true
+  },
+  {
+    "query": "write the PR description",
+    "should_trigger": false
+  },
+  {
+    "query": "do a code quality review of this branch",
+    "should_trigger": false
+  },
+  {
+    "query": "write unit tests for the cache module",
+    "should_trigger": false
+  },
+  {
+    "query": "deploy the app to production",
+    "should_trigger": false
+  },
+  {
+    "query": "check if the release notes are ready",
+    "should_trigger": false
+  }
+]

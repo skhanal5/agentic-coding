@@ -1,0 +1,42 @@
+[
+  {
+    "query": "verify that my fix actually reduced the p95 latency of /search. show me before and after",
+    "should_trigger": true
+  },
+  {
+    "query": "prove it works. the bug was that the cart total was wrong with coupons",
+    "should_trigger": true
+  },
+  {
+    "query": "did this change fix the memory leak? compare heap snapshots on main and my branch",
+    "should_trigger": true
+  },
+  {
+    "query": "tests pass but I need evidence the CLI really prints the new flag. verify",
+    "should_trigger": true
+  },
+  {
+    "query": "show me the evidence that the page now loads faster",
+    "should_trigger": true
+  },
+  {
+    "query": "write tests for the new coupon code",
+    "should_trigger": false
+  },
+  {
+    "query": "review my branch for code quality",
+    "should_trigger": false
+  },
+  {
+    "query": "the code is cleaner now, right?",
+    "should_trigger": false
+  },
+  {
+    "query": "what does the profiler output mean?",
+    "should_trigger": false
+  },
+  {
+    "query": "benchmark library A vs library B for me for a blog post",
+    "should_trigger": false
+  }
+]

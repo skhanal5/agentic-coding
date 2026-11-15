@@ -1,6 +1,6 @@
 ---
 name: verify-this
-description: This skill should be used when the user asks to verify a claim with fresh local evidence. Use when the user asks to restate a claim, capture baseline and treatment, and compare artifacts.
+description: Use this skill whenever the user wants proof or evidence that a change works, not only a summary. Examples are "verify", "prove it works", "did this fix it", "show me before and after", "show me the evidence", or a claim that something got faster, smaller, or fixed. It captures a baseline and a treatment with the same steps, compares the raw results, and gives one verdict. Use it even when tests already pass but the real behavior is not yet confirmed. Skip it for vague claims such as "the code is cleaner".
 ---
 
 # Verify This
@@ -28,18 +28,18 @@ Do not use this for vague claims like "the code is cleaner". Ask for a measurabl
 ## Local Surfaces
 
 - Code behavior: focused unit/integration tests or a minimal repro script.
-- CLI/TUI behavior: `control-cli`, terminal transcript, or demo recording.
-- UI behavior: `control-ui`, screenshots, accessibility snapshots, or browser traces.
+- CLI/TUI behavior: run the command in a terminal and save the transcript.
+- UI behavior: use any browser or desktop tool you have. Save screenshots, accessibility snapshots, or browser traces.
 - API behavior: local HTTP/RPC request and response diff.
 - Performance: same-machine baseline/treatment timings or CPU profiles.
 - Memory: heap snapshots before and after the suspected operation.
 
 ## Artifact Layout
 
-When safe to write artifacts:
+Write artifacts to the scratchpad directory if the environment names one. Otherwise ask where to write them. Do not default to `/tmp`.
 
 ```text
-/tmp/verify-this/<claim-slug>/
+<scratchpad>/verify-this/<claim-slug>/
 ├── claim.md
 ├── timeline.md
 ├── baseline/
@@ -48,7 +48,7 @@ When safe to write artifacts:
 └── verdict.md
 ```
 
-If artifacts may contain sensitive code, prompts, screenshots, HTTP bodies, or heap data, keep only the user agrees to disk storage.
+If artifacts may contain sensitive code, prompts, screenshots, HTTP bodies, or heap data, store them only if the user agrees.
 
 ## Verdict Rules
 

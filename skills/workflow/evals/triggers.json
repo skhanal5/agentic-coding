@@ -1,0 +1,42 @@
+[
+  {
+    "query": "ok so I need to add rate limiting to the login endpoint in services/auth/handler.go, it touches the middleware and the config loader too. can you take this end to end",
+    "should_trigger": true
+  },
+  {
+    "query": "we have a bug where invoices get double charged when the webhook retries. need to fix it, probably spans billing/ and the queue consumer. where do we start",
+    "should_trigger": true
+  },
+  {
+    "query": "add a dark mode toggle to the settings page. it needs a new context provider, a css variable pass and tests. build it",
+    "should_trigger": true
+  },
+  {
+    "query": "refactor the session store out of app.py into its own module and update all 14 call sites",
+    "should_trigger": true
+  },
+  {
+    "query": "I want to implement CSV export for the reports tab. plan it first then build it step by step",
+    "should_trigger": true
+  },
+  {
+    "query": "what does the retry() helper in utils/net.py do? just explaining, dont change anything",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the typo in README line 12, it says 'recieve'",
+    "should_trigger": false
+  },
+  {
+    "query": "write the commit message for what I just staged",
+    "should_trigger": false
+  },
+  {
+    "query": "name a good git branch for adding oauth login",
+    "should_trigger": false
+  },
+  {
+    "query": "review my diff on this branch for maintainability issues",
+    "should_trigger": false
+  }
+]

@@ -5,112 +5,79 @@ description: This skill should be used when the user is ready to ship or create 
 
 # Shipping
 
-Run this skill before you create a PR. It is the final gate between done code and a PR. Do not create a PR without passing this gate.
+Run this skill before you create a PR. It is the final gate between finished code and a PR. Do not create a PR without passing it.
 
-This skill does not duplicate rules from other skills. For branch, commit, comment, test, and PR title and description rules, load those skills directly.
+This skill does not repeat rules from other skills. For branch, commit, comment, test, and PR rules, load those skills.
 
----
+## 1. When to run
 
-## 1. When To Run
+- After Verify in `workflow` is complete.
+- After all code and tests are done per `testing`.
+- Before you load `create-a-pr`.
+- If a check fails, stay in this gate and fix it.
 
-- Run after Verify in `workflow` is complete
-- Run after all code and tests are done per `testing`
-- Run before you load `create-a-pr`
-- If any check fails, stay in this gate and fix before you create a PR
+## 2. PR size
 
----
+- Target is under 500 lines of diff.
+- If the diff is over target, stop and propose a split.
 
-## 2. PR Size
+Split rules:
+- Each split PR works on its own.
+- Each split PR passes tests at its own head commit.
+- A split PR may stack on another split PR. For stacked PR commands and rules, read `references/stacked-prs.md`.
 
-- Target is less than 500 lines diff
-- If diff is over target:
-→ STOP and propose a split
+Exception:
+- If a split would force tests to cover an incomplete feature, keep the larger PR.
+- Flag the size in the PR description under Risks or Testing per `create-a-pr`.
 
-**Split rules:**
-- Each split PR must be independently functional
-- Each split PR must pass tests at its own head commit
-- A split PR may stack on another split PR
-
-**Stacked PRs (via `gh stack`):**
-- GitHub natively supports stacked PRs via `gh stack` (`gh extension install github/gh-stack` — https://gh.io/stacks). Use `gh stack` instead of manual base-branch handling.
-- Create and manage the stack with `gh stack init` (start or adopt a stack), `gh stack add <branch>` (add a layer), `gh stack submit` (push branches and create or update PRs with correct bases), `gh stack sync` (fetch, cascade-rebase, and push), `gh stack rebase` (resolve conflicts), and `gh stack view` (inspect stack).
-- Base the stacked PR on the parent PR's branch, not on `main`. `gh stack submit` sets the base for you.
-- Make the first bullet of its Background section the PR it stacks on. Example: `Stacks on #48.`
-- Review and test each PR in the stack at its own head commit. The `code-review` gate applies to each one.
-- Measure a stacked PR against the parent's branch, not `main`. That is the `<base>` for its review diff and for its size count.
-- When the parent gets new commits, run `gh stack sync` (or `gh stack rebase` then push) and run the gates again. After the parent merges, `gh stack sync --prune` rebases the child onto `main`, updates its base to `main`, and prunes the merged branch. Run the gates again.
-- If you rebase manually and the parent was squash-merged, use `git rebase --onto main <parent-branch>`. A plain `git rebase main` replays the parent's own commits on top of their squashed copy. `gh stack sync` handles this case for you.
-
-**Exception:**
-- If a split would force tests to cover an incomplete feature, keep the larger PR
-- Flag the size in the PR description per `create-a-pr` Risks or Testing section
-- This matches `testing` rule that tests must be in the same PR as the code they cover
-
----
-
-## 3. Code Review Gate
+## 3. Code review gate
 
 - Invoke the `code-review` skill on this branch. Do it after the last commit and before you create the PR.
-- Every PR branch needs its own invocation. These do not count as a review:
-  - The skill's text still in context from an earlier run or another branch
-  - A review done by hand against the skill's checklist
-- The review output includes a record of the commit it covered. See Review Record in `code-review`. The checklist below asks for the SHA in that record.
-- Do not skip this step. The checklist below requires it.
+- Each PR branch needs its own invocation. These do not count:
+  - The skill text still in context from an earlier run or another branch
+  - A manual review against the skill checklist
+- The review output has a record of the commit it covered. See Review record in `code-review`. The checklist below needs that SHA.
 
-**If code review finds fixable issues:**
-- Fix them in the same PR
-- Invoke `code-review` again after each fix, on the new head commit
-- Repeat until no fixable issues remain
-- Fixable means the issue is in code you added or changed and can be fixed without expanding scope beyond the current plan
+If review finds fixable issues:
+- Fix them in the same PR. Fixable means the issue is in code you changed and the fix does not expand scope.
+- Invoke `code-review` again on the new head commit.
+- Repeat until no fixable issues remain.
 
-**If code review finds blocked issues:**
-- STOP. Do not create a PR.
-- Report the issue, why it cannot be fixed in scope, and options
-- Wait for user input per `workflow` stop conditions
-- There is no `testing-and-review` skill. Use `testing` for test gate and `code-review` for review gate.
+If review finds blocked issues:
+- Stop. Do not create a PR.
+- Report the issue, why it cannot be fixed in scope, and the options.
+- Wait for user input per `workflow` stop conditions.
 
-No issues may be deferred to a future PR.
+Defer no issue to a future PR.
 
----
+## 4. Preflight checklist (required output)
 
-## 4. Preflight Checklist (MANDATORY OUTPUT)
-
-Before you create a PR, output this checklist exactly and check each item. All items must be true.
+Before you create a PR, output this checklist exactly. Check each item. All items must be true.
 
 ```
 - [ ] Feature is fully implemented per plan in `workflow`
 - [ ] Scope matches plan. No unintended file changes
-- [ ] All tests are added and passing per `testing`
+- [ ] Tests are added and passing per `testing`
 - [ ] `code-review` invoked on this branch at head commit <SHA>, with verdict Approved and no commits since
 - [ ] PR size is less than 500 lines, or overage is flagged with reason
-- [ ] No TODOs left unresolved
-- [ ] No deferred work exists
-- [ ] Branch follows `make-a-branch`
-- [ ] Commits follow `make-a-commit`
-- [ ] Comments follow `make-a-code-comment` where needed
-- [ ] PR title and description will follow `create-a-pr`
+- [ ] No TODOs left unresolved and no deferred work
 - [ ] Change is reversible
 ```
 
-Replace <SHA> with the SHA from the review record. It must match `git rev-parse --short HEAD`. If you cannot point to a `code-review` invocation on this branch whose record shows that SHA, the item is false.
+Branch, commit, comment, and PR text rules are not in this list. Their own skills own them. Load those skills at their steps in `workflow`.
 
-If any item is not true:
-→ STOP. Return to the correct `workflow` state and fix it. Do not create a PR.
+Replace `<SHA>` with the SHA from the review record. It must match `git rev-parse --short HEAD`. If you cannot point to a `code-review` invocation on this branch with that SHA, the item is false.
 
-PR creation is not allowed without a completed checklist.
+If any item is not true, stop. Return to the right `workflow` state and fix it. Do not create a PR.
 
----
-
-## 5. Definition of Done
+## 5. Definition of done
 
 A task is done only when all of these are true:
 
-- Implementation is finished per `workflow`
-- Tests are added and passing per `testing`
-- `code-review` has been invoked on the final head commit, with verdict Approved
-- PR size check above is met or flagged
-- Preflight checklist above is complete
-- PR has been created with title and description per `create-a-pr`
-- No concerns remain unresolved
-
-If any item is not true, the task is not done.
+- Implementation is finished per `workflow`.
+- Tests are added and passing per `testing`.
+- `code-review` ran on the final head commit with verdict Approved.
+- The PR size check is met or flagged.
+- The preflight checklist is complete.
+- The PR exists with a title and description per `create-a-pr`.
+- No concerns remain unresolved.

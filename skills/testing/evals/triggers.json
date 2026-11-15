@@ -1,0 +1,42 @@
+[
+  {
+    "query": "write unit tests for the parseDuration function, cover bad input too",
+    "should_trigger": true
+  },
+  {
+    "query": "add table driven tests in Go for the validator package",
+    "should_trigger": true
+  },
+  {
+    "query": "review my tests. I think some of them mock everything and cant fail",
+    "should_trigger": true
+  },
+  {
+    "query": "every test in orders_test.go repeats the same 20 lines of setup and a few have no assertions. help me clean the tests up",
+    "should_trigger": true
+  },
+  {
+    "query": "my tests share a temp file and fail when run in parallel. fix the test design",
+    "should_trigger": true
+  },
+  {
+    "query": "verify that the memory usage really dropped after my change",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the production bug where login times out",
+    "should_trigger": false
+  },
+  {
+    "query": "write the PR description",
+    "should_trigger": false
+  },
+  {
+    "query": "set up CI to run on every push",
+    "should_trigger": false
+  },
+  {
+    "query": "lets do TDD for the new pricing calculator. write the failing test first",
+    "should_trigger": false
+  }
+]

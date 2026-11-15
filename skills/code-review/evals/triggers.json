@@ -1,0 +1,42 @@
+[
+  {
+    "query": "can you do a really strict maintainability review of my branch before I open the PR? I'm worried I made handler.ts too big",
+    "should_trigger": true
+  },
+  {
+    "query": "run a thermo-nuclear review on the changes against main",
+    "should_trigger": true
+  },
+  {
+    "query": "audit this diff for spaghetti growth. I added a bunch of special-case ifs to checkout.py and I'm not sure it's ok",
+    "should_trigger": true
+  },
+  {
+    "query": "is there a code judo move here? my change to the scheduler feels way more complicated than it should be",
+    "should_trigger": true
+  },
+  {
+    "query": "review the abstractions in my PR. I think I added too many wrapper helpers in lib/http/",
+    "should_trigger": true
+  },
+  {
+    "query": "write unit tests for the parseDuration function",
+    "should_trigger": false
+  },
+  {
+    "query": "check my PR title and description format",
+    "should_trigger": false
+  },
+  {
+    "query": "fix the merge conflicts in package.json and src/index.ts",
+    "should_trigger": false
+  },
+  {
+    "query": "clean up the extra comments the AI left in my diff",
+    "should_trigger": false
+  },
+  {
+    "query": "review this paragraph of my blog post for clarity",
+    "should_trigger": false
+  }
+]
