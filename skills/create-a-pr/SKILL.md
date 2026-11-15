@@ -1,6 +1,6 @@
 ---
 name: create-a-pr
-description: This skill should be used when the user asks to create a PR, write a PR title or description, or check PR format. Use when the user asks to create operation colon summary titles and Background, Changes, Testing, Risks descriptions.
+description: Use this skill whenever the user asks to create, open, or draft a pull request, or to write or check a PR title or description. Examples are "create a PR for this branch", "open a pull request", "draft the PR body", and "is my PR title ok". It sets the title format `<operation>: <summary>` and the Background, Changes, Risks, Testing description. Use it every time you are about to run `gh pr create`. Skip it for commits, branch names, and code review.
 ---
 
 # Create a PR

@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: This skill should be used when the user asks to review code, run a thermo-nuclear review, check maintainability, or audit abstraction quality, giant files, or spaghetti growth. Use for deep code quality and code judo reviews.
+description: Use this skill whenever the user asks to review code quality on a branch or PR. Examples are a maintainability review, a thermo-nuclear review, a code judo check, too many wrapper helpers or abstractions, a file that grew too big, special-case branches that make code messy, or a change that feels more complicated than it should be. It runs a strict structural review and ends with a verdict line that the `shipping` gate checks. Use it even if the user does not say "code review". Skip it for PR text, tests, and merge conflicts.
 ---
 
 # Thermo-Nuclear Code Quality Review
