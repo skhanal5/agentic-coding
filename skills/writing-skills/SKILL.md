@@ -23,7 +23,7 @@ skills/<name>/evals/triggers.json
 
 The description decides when the skill loads. It is the most important text in the skill.
 
-- Start with "Use this skill whenever". Name the real requests that should load it. Use words a user would type.
+- Name the real requests that should load it. Use words a user would type. Opening with "Use this skill whenever" works well.
 - Say "Use it even if the user does not say <name>". Models under-trigger skills.
 - End with what to skip and which skill to use instead. This prevents overlap.
 - Keep it under 1024 characters. Use plain English with no em dashes and no semi-colons.

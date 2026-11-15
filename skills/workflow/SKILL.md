@@ -1,6 +1,6 @@
 ---
 name: workflow
-description: Use this skill whenever the user asks you to build, add, fix, or refactor something that touches more than one file or needs a plan first. Examples are new features, bug fixes that span modules, refactors with many call sites, and requests like "take this end to end", "plan it then build it", or "where do we start". It sets the order: understand, plan, branch, implement, verify, PR. It also sets scope control and stop conditions. Use it even if the user does not say "workflow". Skip it for read-only questions and one-line fixes.
+description: Use this skill whenever the user asks you to build, add, fix, or refactor something that touches more than one file or needs a plan first. Examples are new features, bug fixes that span modules, refactors with many call sites, and requests like "take this end to end", "plan it then build it", or "where do we start". It sets the order: understand, plan, branch, implement, verify, PR. It also sets scope control and stop conditions. Use it even if the user does not say "workflow". For a bug with an unknown cause, use `debugging` first. Skip it for read-only questions and one-line fixes.
 ---
 
 # Workflow Discipline
