@@ -50,10 +50,11 @@ Skills:
 - `SKILL.md` is at most 150 lines. Move long detail to `references/` and link to it.
 - Each skill has `evals/triggers.json` with at least 5 prompts that should trigger it and 5 that should not.
 
-Run the check before you open a PR:
+Run the check and its tests before you open a PR:
 
 ```bash
 python3 scripts/check_skills.py
+python3 -m unittest discover -s tests
 ```
 
 ## Adding a skill
