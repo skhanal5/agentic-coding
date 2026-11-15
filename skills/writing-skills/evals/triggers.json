@@ -1,0 +1,42 @@
+[
+  {
+    "query": "add a new skill to this repo for handling database migrations",
+    "should_trigger": true
+  },
+  {
+    "query": "the deslop skill never triggers when I say clean this up. fix its description",
+    "should_trigger": true
+  },
+  {
+    "query": "workflow/SKILL.md is too long. shorten it and move detail to references",
+    "should_trigger": true
+  },
+  {
+    "query": "write the trigger evals for the new debugging skill",
+    "should_trigger": true
+  },
+  {
+    "query": "split the shipping skill in two, it does too much",
+    "should_trigger": true
+  },
+  {
+    "query": "use the make-a-commit skill to commit my staged changes",
+    "should_trigger": false
+  },
+  {
+    "query": "write a README section about how to install the repo",
+    "should_trigger": false
+  },
+  {
+    "query": "add a dark mode toggle to the settings page",
+    "should_trigger": false
+  },
+  {
+    "query": "create a PR for this branch",
+    "should_trigger": false
+  },
+  {
+    "query": "how do Claude Code skills work in general? explain it to me",
+    "should_trigger": false
+  }
+]
