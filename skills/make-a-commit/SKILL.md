@@ -1,6 +1,6 @@
 ---
 name: make-a-commit
-description: This skill should be used when the user asks to create a commit, write a commit message, or check commit hygiene. Use when the user asks to stage small, isolated, always-valid commits with plain English messages.
+description: Use this skill whenever the user asks to commit, stage files, or write a commit message. Examples are "commit this", "commit what I have", "write a commit message for what is staged", and "how should I commit these changes". It sets the rules for small, isolated, always-valid commits with plain English messages. Use it every time you are about to run `git commit`, even if the user only says "commit". Skip it for pushing, branching, and PR text.
 ---
 
 # Make a commit

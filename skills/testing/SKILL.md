@@ -1,6 +1,6 @@
 ---
 name: testing
-description: This skill should be used when the user asks to write tests, add unit tests, review tests, or needs TDD guidance. Use when the user asks to cover happy, unhappy, and edge cases with table-driven and behavioral tests.
+description: Use this skill whenever the user asks to write, add, fix, or review tests. Examples are unit tests, table-driven tests, TDD, mocks that make tests unable to fail, flaky tests, tests that share state, and tests that fail in parallel. It sets rules for happy, unhappy, and edge cases, real behavior checks, cleanup, and portability. Use it even if the user does not say "testing" and only describes a test problem. Skip it for proof that a change fixed a bug in the real app. Use `verify-this` for that.
 ---
 
 # Testing

@@ -1,6 +1,6 @@
 ---
 name: verify-this
-description: This skill should be used when the user asks to verify a claim with fresh local evidence. Use when the user asks to restate a claim, capture baseline and treatment, and compare artifacts.
+description: Use this skill whenever the user wants proof or evidence that a change works, not only a summary. Examples are "verify", "prove it works", "did this fix it", "show me before and after", "show me the evidence", or a claim that something got faster, smaller, or fixed. It captures a baseline and a treatment with the same steps, compares the raw results, and gives one verdict. Use it even when tests already pass but the real behavior is not yet confirmed. Skip it for vague claims such as "the code is cleaner".
 ---
 
 # Verify This

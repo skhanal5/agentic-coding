@@ -1,6 +1,6 @@
 ---
 name: workflow
-description: This skill should be used when the user starts a non-trivial code change, new feature, bug fix, or multi-file edit. Use when the user asks to understand, plan, implement, verify, or create a PR with scope control and stop conditions.
+description: Use this skill whenever the user asks you to build, add, fix, or refactor something that touches more than one file or needs a plan first. Examples are new features, bug fixes that span modules, refactors with many call sites, and requests like "take this end to end", "plan it then build it", or "where do we start". It sets the order: understand, plan, branch, implement, verify, PR. It also sets scope control and stop conditions. Use it even if the user does not say "workflow". Skip it for read-only questions and one-line fixes.
 ---
 
 # Workflow Discipline
