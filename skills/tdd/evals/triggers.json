@@ -1,0 +1,42 @@
+[
+  {
+    "query": "lets do TDD for the new pricing calculator in pricing/calc.py. discounts, tax, rounding. where should I start",
+    "should_trigger": true
+  },
+  {
+    "query": "write the failing test first for a function that parses '2h30m' into seconds, then make it pass",
+    "should_trigger": true
+  },
+  {
+    "query": "customers get charged twice when the webhook retries. fix it but reproduce it with a test before changing any code",
+    "should_trigger": true
+  },
+  {
+    "query": "red green refactor this slugify() helper with me, one behavior at a time",
+    "should_trigger": true
+  },
+  {
+    "query": "I need a new POST /invoices endpoint. build it test first please, I dont want code before the tests",
+    "should_trigger": true
+  },
+  {
+    "query": "review my existing tests. some of them mock everything and cant fail",
+    "should_trigger": false
+  },
+  {
+    "query": "my tests share a temp file and break when run in parallel, fix them",
+    "should_trigger": false
+  },
+  {
+    "query": "add a unit test file for the finished cache module, the code is already merged",
+    "should_trigger": false
+  },
+  {
+    "query": "prove the p95 latency dropped after my change, show before and after",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what test driven development is in a few sentences",
+    "should_trigger": false
+  }
+]

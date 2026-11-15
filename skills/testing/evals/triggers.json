@@ -12,7 +12,7 @@
     "should_trigger": true
   },
   {
-    "query": "I want to do TDD for the new pricing calculator. where do I start",
+    "query": "every test in orders_test.go repeats the same 20 lines of setup and a few have no assertions. help me clean the tests up",
     "should_trigger": true
   },
   {
@@ -36,7 +36,7 @@
     "should_trigger": false
   },
   {
-    "query": "explain what a mock is",
+    "query": "lets do TDD for the new pricing calculator. write the failing test first",
     "should_trigger": false
   }
 ]

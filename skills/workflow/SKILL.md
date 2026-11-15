@@ -71,7 +71,7 @@ Goal: build the change in small, valid steps.
 
 This state loops. Each loop makes one small commit. For each loop, load these skills in order:
 
-1. `testing` for code and tests
+1. `tdd` for code and tests. It uses the rules in `testing`.
 2. `make-a-code-comment` for comments
 3. `make-a-commit` for the commit
 
@@ -89,7 +89,7 @@ Stop if:
 
 Exit check:
 - All planned behavior is done.
-- All checks from `testing`, `make-a-code-comment`, and `make-a-commit` pass.
+- All checks from `tdd`, `testing`, `make-a-code-comment`, and `make-a-commit` pass.
 - You reviewed all subagent output.
 
 ---
@@ -122,7 +122,7 @@ Stop if tests fail or are missing, the PR is over size without a valid exception
 ## Which skill when
 
 - Branch: `make-a-branch`
-- Implement loop: `testing`, `make-a-code-comment`, `make-a-commit`
+- Implement loop: `tdd`, `make-a-code-comment`, `make-a-commit`
 - Verify: `testing` and `shipping`
 - Create PR: `create-a-pr` and `shipping`
 

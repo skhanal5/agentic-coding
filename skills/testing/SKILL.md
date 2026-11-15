@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Use this skill whenever the user asks to write, add, fix, or review tests. Examples are unit tests, table-driven tests, TDD, mocks that make tests unable to fail, flaky tests, tests that share state, and tests that fail in parallel. It sets rules for happy, unhappy, and edge cases, real behavior checks, cleanup, and portability. Use it even if the user does not say "testing" and only describes a test problem. Skip it for proof that a change fixed a bug in the real app. Use `verify-this` for that.
+description: Use this skill whenever the user asks to write, add, fix, or review tests. Examples are unit tests, table-driven tests, mocks that make tests unable to fail, flaky tests, tests that share state, and tests that fail in parallel. It sets rules for happy, unhappy, and edge cases, real behavior checks, cleanup, and portability. Use it even if the user does not say "testing" and only describes a test problem. Skip it for test-first work. Use `tdd` for that. Skip it for proof that a change fixed a bug in the real app. Use `verify-this` for that.
 ---
 
 # Testing
@@ -18,11 +18,7 @@ If tests are missing, stop. Add tests before PR creation.
 
 ## 2. TDD style
 
-- Write the test with the code change, not at the end.
-- Steps:
-  - Write a failing test for the next small behavior.
-  - Write the smallest code to make it pass.
-  - Refactor while tests stay green.
+- Write the test with the code change, not at the end. Load `tdd` and follow it.
 - If you skipped TDD, still write tests before you mark the PR ready.
 
 ## 3. What to test
