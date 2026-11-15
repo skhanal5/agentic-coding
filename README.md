@@ -80,6 +80,8 @@ PYTHONPATH=$SC python3 $SC/scripts/run_eval.py \
 
 To tune the description, use `$SC/scripts/run_loop.py` with the same arguments plus `--model <model-id>`. It splits the prompts into train and test sets and proposes better descriptions. Apply the best description by hand and run the check again.
 
+The skill you test is usually also installed in `~/.claude/skills`. The installed copy can load instead of the test copy, and the stock runner then reports 0 triggers. Count a trigger on the real skill name to avoid this. See `skills/writing-skills/SKILL.md` for cost rules and tips.
+
 These runs are real model runs and cost tokens.
 
 ## Updating configuration
