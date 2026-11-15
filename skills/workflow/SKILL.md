@@ -27,6 +27,7 @@ Goal: know what to build and why before you change code.
 - Read all relevant files fully. Do not read snippets.
 - Find how the area is used today.
 - State assumptions, risks, and unknowns in plain words.
+- For a bug with an unknown cause, load `debugging` first. Do not plan a fix before you know the cause.
 
 Exit check:
 - You can explain the change to a new reader in plain English.

@@ -1,0 +1,42 @@
+[
+  {
+    "query": "the nightly export job crashes with 'NoneType has no attribute id' but only on some days. no idea why, can you find out",
+    "should_trigger": true
+  },
+  {
+    "query": "cart total is off by a few cents when a coupon is applied. I can't tell where it goes wrong",
+    "should_trigger": true
+  },
+  {
+    "query": "this worked fine yesterday and now login returns 500. I didnt touch the auth code. help me figure out what broke",
+    "should_trigger": true
+  },
+  {
+    "query": "our integration tests hang about 1 in 10 runs on CI. why",
+    "should_trigger": true
+  },
+  {
+    "query": "memory keeps growing in the worker process after a few hours. find the cause",
+    "should_trigger": true
+  },
+  {
+    "query": "we know the cause, the cache key is missing the tenant id. just build the fix with tests",
+    "should_trigger": false
+  },
+  {
+    "query": "add a retry to the http client when we get a 429",
+    "should_trigger": false
+  },
+  {
+    "query": "review my tests, a few of them cant fail",
+    "should_trigger": false
+  },
+  {
+    "query": "prove the latency dropped after my fix with before and after numbers",
+    "should_trigger": false
+  },
+  {
+    "query": "what does a segfault mean?",
+    "should_trigger": false
+  }
+]
