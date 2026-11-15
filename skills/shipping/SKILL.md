@@ -57,17 +57,14 @@ Before you create a PR, output this checklist exactly. Check each item. All item
 ```
 - [ ] Feature is fully implemented per plan in `workflow`
 - [ ] Scope matches plan. No unintended file changes
-- [ ] All tests are added and passing per `testing`
+- [ ] Tests are added and passing per `testing`
 - [ ] `code-review` invoked on this branch at head commit <SHA>, with verdict Approved and no commits since
 - [ ] PR size is less than 500 lines, or overage is flagged with reason
-- [ ] No TODOs left unresolved
-- [ ] No deferred work exists
-- [ ] Branch follows `make-a-branch`
-- [ ] Commits follow `make-a-commit`
-- [ ] Comments follow `make-a-code-comment` where needed
-- [ ] PR title and description will follow `create-a-pr`
+- [ ] No TODOs left unresolved and no deferred work
 - [ ] Change is reversible
 ```
+
+Branch, commit, comment, and PR text rules are not in this list. Their own skills own them. Load those skills at their steps in `workflow`.
 
 Replace `<SHA>` with the SHA from the review record. It must match `git rev-parse --short HEAD`. If you cannot point to a `code-review` invocation on this branch with that SHA, the item is false.
 

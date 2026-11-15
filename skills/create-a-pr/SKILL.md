@@ -37,9 +37,7 @@ Use these headings in this order:
 
 ## 3. Language
 
-- Plain English. ASD-STE100 style: short sentences, simple verbs, active voice, one word per idea.
-- No jargon and no idioms.
-- No em dashes. No semi-colons. Use periods.
+- Follow the Language rules in `CLAUDE.md`.
 - One idea per bullet.
 
 Good: `Fix login retry. Server returned 429 without Retry-After. Added fallback wait.`
@@ -73,7 +71,7 @@ For full examples, read `references/examples.md`.
 - [ ] Title is short and plain
 - [ ] Description has Background, Changes, Testing, and Risks only if needed
 - [ ] Description uses bullets and is concise
-- [ ] Language is plain. No em dashes. No semi-colons.
+- [ ] Language follows `CLAUDE.md`
 - [ ] A reader with zero context can understand it
 
 If any item fails, fix it before creating the PR.

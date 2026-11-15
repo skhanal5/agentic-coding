@@ -18,9 +18,7 @@ If the code is clear without a comment, add no comment.
 
 ## 2. Language
 
-- Plain English that is easy to translate. ASD-STE100 style: short sentences, simple verbs, active voice, one word per idea.
-- No jargon and no idioms.
-- No em dashes. No semi-colons. Use periods.
+- Follow the Language rules in `CLAUDE.md`. Make the text easy to translate.
 
 Good: `Retry three times before failure. Wait longer between each retry.`
 
@@ -61,7 +59,7 @@ Use a longer comment only for unusually complex code. State the reason, the trad
 
 - [ ] The comment is needed. The code alone is not clear enough.
 - [ ] It is short. Extra detail only for complex code.
-- [ ] The language is plain. No em dashes. No semi-colons.
+- [ ] The language follows `CLAUDE.md`
 - [ ] A reader with zero context can understand it.
 - [ ] A bug or incident reference is included if relevant.
 - [ ] A hack or temporary fix is labeled with the next step.

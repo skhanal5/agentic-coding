@@ -34,11 +34,10 @@ If scope expands, stop. Make separate commits or branches per `make-a-branch`.
 ## 3. Message
 
 - Short, plain, and focused on the outcome. A reader with zero context must understand it.
-- ASD-STE100 style: short sentences, simple verbs, active voice, one word per idea. No jargon.
+- Follow the Language rules in `CLAUDE.md`.
 - Imperative mood. Lowercase. No period at the end of the subject.
 - Say what changed and why it matters. Do not list files or process.
 - Subject is 72 characters or less.
-- No em dashes. No semi-colons.
 - Conventional prefixes (`feat:`, `fix:`, `chore:`, `test:`) are optional. If you use them, use them consistently.
 
 Good: `add retry logic with exponential backoff`, `fix session persistence after restart`.
@@ -66,7 +65,7 @@ If unsure, skip the body.
 - [ ] The change has one purpose
 - [ ] The app is valid (build and tests pass)
 - [ ] The message is short and clear with zero context
-- [ ] The language is plain. No em dashes. No semi-colons.
+- [ ] The language follows `CLAUDE.md`
 - [ ] A body exists only if needed
 - [ ] No unrelated files are staged (`git status` and `git diff --staged` checked)
 
