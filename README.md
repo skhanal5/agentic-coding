@@ -30,6 +30,8 @@ Skills:
 - `make-a-branch`: branch naming and the single-purpose rule
 - `make-a-commit`: small, valid commits with plain messages
 - `make-a-code-comment`: plain comments, bug references, and HACK labels
+- `debugging`: reproduce, find the root cause, then fix
+- `writing-skills`: repo rules for adding and tuning skills
 - `tdd`: test-first loop of red, green, refactor
 - `testing`: what good tests look like and the PR test rule
 - `code-review`: strict maintainability review with a review record
